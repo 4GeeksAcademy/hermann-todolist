@@ -17,14 +17,25 @@ export const TaskList = () => {
         }
     }
 
+    const handleRemoveTask = (index) => {
+        const newList = [...list];
+        newList.splice(index, 1);
+        setList(newList);
+    }
+
     return (
         <div className="container">
             <h1 className="title">todos</h1>
             <input type='text' placeholder="What's need to be done?" value={task} onChange={(e) => setTask(e.target.value)} onKeyPress={handleKeyPress}/>
             <ul>
-                
+                {list.map((item, index) => (
+                    <li key={index}>
+                        {item}
+                        <button onClick={() => {handleRemoveTask(index)}}>X</button>
+                    </li>
+                ))}
             </ul>
-            <p className="taskCount">{list.length} items left</p>
+            <p className="taskCount">{list.length === 0 ? 'No items left' : `${list.length} items left`}</p>
         </div>
     );
 }

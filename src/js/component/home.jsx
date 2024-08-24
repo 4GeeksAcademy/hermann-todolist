@@ -7,7 +7,7 @@ import {TaskList} from "./tasks.jsx";
 //create your first component
 const Home = () => {
 	return (
-		<div className="text-center">
+		<div className="app">
 			<TaskList />
 		</div>
 	);
