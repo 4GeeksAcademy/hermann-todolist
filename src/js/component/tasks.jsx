@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 export const TaskList = () => {
     const [task, setTask] = useState('');
     const [list, setList] = useState([]);
-    const [count, setCounter] = useState(0);
 
     const handleAddTask = () => {
         if(task.trim () !== ''){
@@ -12,14 +11,20 @@ export const TaskList = () => {
         }
     }
 
+    const handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            handleAddTask();
+        }
+    }
+
     return (
         <div className="container">
             <h1 className="title">todos</h1>
-            <input type='text' placeholder="What's need to be done?" value={task}/>
+            <input type='text' placeholder="What's need to be done?" value={task} onChange={(e) => setTask(e.target.value)} onKeyPress={handleKeyPress}/>
             <ul>
-
+                
             </ul>
-            <p className="taskCount">`${count} items left`</p>
+            <p className="taskCount">{list.length} items left</p>
         </div>
     );
 }
