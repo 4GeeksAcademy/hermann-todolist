@@ -72,3 +72,10 @@ li button:hover {
     font-size: 14px;
     color: #777;
 }
+li button {
+    visibility: hidden;
+}
+
+li:hover button  {
+    visibility: visible;
+}

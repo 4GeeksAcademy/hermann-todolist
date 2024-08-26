@@ -5,7 +5,7 @@ export const TaskList = () => {
     const [list, setList] = useState([]);
 
     const handleAddTask = () => {
-        if(task.trim () !== ''){
+        if(task.trim() !== ''){
             setList([...list, task]);
             setTask('');
         }
@@ -26,7 +26,7 @@ export const TaskList = () => {
     return (
         <div className="container">
             <h1 className="title">todos</h1>
-            <input type='text' placeholder="What's need to be done?" value={task} onChange={(e) => setTask(e.target.value)} onKeyPress={handleKeyPress}/>
+            <input type='text' placeholder="What's need to be done?" value={task} onChange={(e) => setTask(e.target.value)} onKeyDown={handleKeyPress} />
             <ul>
                 {list.map((item, index) => (
                     <li key={index}>
@@ -35,7 +35,7 @@ export const TaskList = () => {
                     </li>
                 ))}
             </ul>
-            <p className="taskCount">{list.length === 0 ? 'No items left' : `${list.length} items left`}</p>
+            <p className="taskCount">{list.length === 0 ? 'No hay tareas, Añadir tareas' : `${list.length} items left`}</p>
         </div>
     );
 }
